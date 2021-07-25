@@ -1,0 +1,92 @@
+html
+  head
+    title
+      | payroll
+    style.
+      td {
+      width: 132px;
+      border: 1px black solid;
+      border-collapse: collapse;
+      padding-right: 0.5em;
+      vertical-align: top;
+      }
+      
+      li {
+        list-style: none;
+        margin:10px 10px 10px;}
+      @font-face {
+        font-family: Vazir;
+          src: url('https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.eot');
+          src: url('https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.eot?#iefix') format('embedded-opentype'),
+            url('https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.woff2') format('woff2'),
+            url('https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.woff') format('woff'),
+            url('https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.ttf') format('truetype');
+        font-weight: normal;
+      } 
+  body
+    #main
+      div(dir='rtl' style=';text-align: right;')
+        p(align='center') شرکت آرکاگزین کیان
+        p(align='center') اسم فایل
+        table(style='height: 30px; width: 100%;')
+          tbody
+            tr
+              td کد: #{list2.information['كد']}
+              td نام و نام خانوادگی : &nbsp;&nbsp; #{list2.information['نام و نام خانوادگي']}
+              td مرکز هزینه : &nbsp;&nbsp; #{list2.information['مركز هزينه']}
+              td محل خدمت :&nbsp;&nbsp; #{list2.information['محل خدمت']}
+        table(style='height: 30px; width: 100%; margin-top: 5px;')
+          tbody
+            tr(style='text-align: center')
+              td  کارکرد
+              td  مزایا 
+              td  کسور
+              td  اقساط
+               
+        table(style='height: 143px;' width='100%')
+          tbody
+            tr
+              td
+                for val,index in list2.karkard
+                  li(style='justify-content: space-between;')  
+                    span.
+                      #{index} 
+                    span(dir="ltr" style="float:left").
+                      #{val}
+              td
+                each val, index in list2.mazaya
+                  li(style='justify-content: space-between;') 
+                    span.
+                      #{index} 
+                    span(dir="ltr"  style="float:left").
+                      #{val}
+              td 
+                each val, index in list2.kosorat
+                  li(style='justify-content: space-between;') 
+                    span.
+                      #{index} 
+                    span(dir="ltr"  style="float:left;font-style: normal;").
+                      #{val}
+              td 
+                each val, index in list2.aghsat
+                  li(style='justify-content: space-between;') 
+                    span.
+                      #{index} 
+                    span(dir="ltr"  style="float:left;font-style: normal;").
+                      #{val} 
+
+        table(style='height: 30px; width: 100%; margin-top: 5px;')
+          tbody
+            tr(style='height: 30px;')
+              td(style='height: 23px;')  
+              td(style='height: 23px;')  جمع: #{list2.sums['كل حقوق و مزايا']}
+              td(style='height: 23px;')  جمع: #{list2.sums['جمع كسور']}
+              td(style='height: 23px;')   جمع:
+            tr(style='height: 30px;')
+              td(style='height: 23px;')  
+              td(style='height: 23px;')  بانک/صندوق: #{list2.information['بانك']}
+              td(style='height: 23px;')  شماره حساب: #{list2.information['شماره حساب']}
+              td(style='height: 23px;')   خالص: #{list2.sums['خالص پرداختنی']}
+      p  
+      p
+        strong شرکت آرکا گزین کیان
